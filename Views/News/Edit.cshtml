@@ -1,0 +1,19 @@
+@model Server.Models.News
+@{
+    ViewData["Title"] = "Create New Page";
+}
+
+<h1>Edit News</h1>
+
+<form asp-controller="News" asp-action="CreateNews">
+    <label asp-for="Title">Titel</label>
+    <input type="text" asp-for="Title">
+    
+    <label asp-for="Content">Inhalt</label>
+    <textarea asp-for="Content"></textarea>
+
+    <label for="save-news" value="save-news" formaction="Save">Speichern</label>
+    <input type="submit" id="save-news">
+</form>
+
+

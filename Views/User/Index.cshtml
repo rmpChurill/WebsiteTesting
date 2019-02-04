@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Server.Models.User;
+
+<h1>Create New Person!</h1>
+
+<form asp-controller="Person" asp-action="Index">
+    <label asp-for="Name"></label>
+    <input type="text" asp-for="Name" />
+    <label asp-for="Mail"></label>
+    <input type="text"asp-for="Mail"/>
+    <label asp-for="IsOperator"></label>
+    <input type="checkbox"asp-for="IsOperator"/>
+
+    <input type="submit"/>
+</form>

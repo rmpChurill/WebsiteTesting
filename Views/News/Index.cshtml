@@ -1,0 +1,31 @@
+﻿@model NewsCollection
+
+@{
+    ViewData["Title"] = "News";
+}
+
+<h1>News</h1>
+
+@if(this.Model.Empty) 
+{
+    <p>There are no News!</p>
+    <p>Click <a asp-controller="News" asp-action="CreateDummyNews">here</a> to create some!</p>
+}
+else
+{
+    for(int i = 0; i< this.Model.Count; i++)
+    {
+        var item = this.Model[i];
+
+        <div class="news-box">
+            <div class="news-header">
+                <h3><a asp-route-event="@item.Id" asp-controller="news" asp-action="Show">@item.Title</a></h3>
+            </div>
+            <div class="news-body">
+                <p>@item.Content</p>
+            </div>
+        </div>
+    }
+}
+
+<h1>Ende!</h1>

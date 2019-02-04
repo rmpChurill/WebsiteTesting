@@ -1,0 +1,22 @@
+@model Server.Models.News
+@{
+    ViewData["Title"] = "Create New Page";
+    var valid = this.Model != null;
+    var news = this.Model;
+}
+
+@if(valid)
+{
+    <h3>@news.Title</h3>
+    <div>@news.CreationTime.ToLongDateString()</div>
+    <div>@news.Content</div>
+
+    <div>
+        <a asp-controller="News" asp-action="Delete">Löschen</a>
+        <a asp-controller="News" asp-action="Edit" asp-route-event="@news.Id">Bearbeiten</a>
+    </div>
+}
+else
+{
+    <h3>Ungültige Id!</h3>
+}

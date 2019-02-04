@@ -6,10 +6,10 @@
 
 <h1>News</h1>
 
-@if(this.Model.Empty) 
+@if(this.Model == null || this.Model.Empty) 
 {
-    <p>There are no News!</p>
-    <p>Click <a asp-controller="News" asp-action="CreateDummyNews">here</a> to create some!</p>
+    <p>Es existieren keine Neuigkeiten!</p>
+    <p><a asp-controller="News" asp-action="CreateDummyNews">Hier</a> klicken um News zu erstellen</p>
 }
 else
 {

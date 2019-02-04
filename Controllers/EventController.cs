@@ -6,11 +6,11 @@ namespace Server.Controllers
     using Server.Models;
     using Server.Utils;
 
-    public class NewsController : Controller
+    public class EventController : Controller
     {
         public IActionResult Index()
         {
-            return this.View(new NewsCollection(MainDbContext.Instance.News));
+            return this.View(new EventCollection(MainDbContext.Instance.Events));
         }
 
         public IActionResult Create()
@@ -19,39 +19,39 @@ namespace Server.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(News userModel)
+        public IActionResult Create(Event userModel)
         {
             return this.View();
         }
 
         public IActionResult Show(int @event)
         {
-            return this.View(MainDbContext.Instance.News.Where(n => n.Id == @event).SingleOrDefault());
+            return this.View(MainDbContext.Instance.Events.Where(n => n.Id == @event).SingleOrDefault());
         }
 
         public IActionResult Edit(int @event)
         {
-            return this.View(MainDbContext.Instance.News.Where(n => n.Id == @event).SingleOrDefault());
+            return this.View(MainDbContext.Instance.Events.Where(n => n.Id == @event).SingleOrDefault());
         }
 
         [HttpPost]
         public IActionResult Delete(int @event)
         {
-            return this.View(MainDbContext.Instance.News.Where(n => n.Id == @event).SingleOrDefault());
+            return this.View(MainDbContext.Instance.Events.Where(n => n.Id == @event).SingleOrDefault());
         }
 
         [HttpPost]
-        public IActionResult Save(News model)
+        public IActionResult Save(Event model)
         {
             model.LastEditedTime = DateTime.Now;
 
-            var dbItem = MainDbContext.Instance.News.Where(n => n.Id == model.Id).SingleOrDefault();
+            var dbItem = MainDbContext.Instance.Events.Where(n => n.Id == model.Id).SingleOrDefault();
 
             if (dbItem != null)
             {
                 Mapper.Copy(model, dbItem);
 
-                MainDbContext.Instance.News.Update(dbItem);
+                MainDbContext.Instance.Events.Update(dbItem);
                 MainDbContext.Instance.SaveChanges();
             }
 

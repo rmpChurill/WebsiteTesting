@@ -11,17 +11,20 @@ namespace server.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    Title = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Type = table.Column<int>(nullable: false),
+                    TypeIntern = table.Column<string>(nullable: true),
+                    VisibilityIntern = table.Column<string>(nullable: true),
                     CreationTime = table.Column<DateTime>(nullable: false),
-                    EventStart = table.Column<DateTime>(nullable: false),
-                    EventEnd = table.Column<DateTime>(nullable: false),
-                    IsPublic = table.Column<bool>(nullable: false)
+                    LastEditedTime = table.Column<DateTime>(nullable: false),
+                    Start = table.Column<DateTime>(nullable: false),
+                    End = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.Title);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,7 +35,8 @@ namespace server.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: false)
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    LastEditedTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

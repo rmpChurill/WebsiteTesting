@@ -5,7 +5,9 @@
 
 <h1>Edit News</h1>
 
-<form asp-controller="News" asp-action="CreateNews">
+<form action="save" method="POST">
+    <input type="text" asp-for="Id" hidden>
+
     <label asp-for="Title">Titel</label>
     <input type="text" asp-for="Title">
     

@@ -9,7 +9,7 @@ using Server.Models;
 namespace server.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20190204103959_InitialCreate")]
+    [Migration("20190204193112_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,22 +20,26 @@ namespace server.Migrations
 
             modelBuilder.Entity("Server.Models.Event", b =>
                 {
-                    b.Property<string>("Title")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreationTime");
 
                     b.Property<string>("Description");
 
-                    b.Property<DateTime>("EventEnd");
+                    b.Property<DateTime>("End");
 
-                    b.Property<DateTime>("EventStart");
+                    b.Property<DateTime>("LastEditedTime");
 
-                    b.Property<bool>("IsPublic");
+                    b.Property<DateTime>("Start");
 
-                    b.Property<int>("Type");
+                    b.Property<string>("Title");
 
-                    b.HasKey("Title");
+                    b.Property<string>("TypeIntern");
+
+                    b.Property<string>("VisibilityIntern");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Events");
                 });
@@ -48,6 +52,8 @@ namespace server.Migrations
                     b.Property<string>("Content");
 
                     b.Property<DateTime>("CreationTime");
+
+                    b.Property<DateTime>("LastEditedTime");
 
                     b.Property<string>("Title");
 

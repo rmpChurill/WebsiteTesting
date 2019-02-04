@@ -1,18 +1,14 @@
+@Model User
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Account Management";
 }
 
-@model Server.Models.User;
-
-<h1>Create New Person!</h1>
-
-<form asp-controller="Person" asp-action="Index">
-    <label asp-for="Name"></label>
-    <input type="text" asp-for="Name" />
-    <label asp-for="Mail"></label>
-    <input type="text"asp-for="Mail"/>
-    <label asp-for="IsOperator"></label>
-    <input type="checkbox"asp-for="IsOperator"/>
-
-    <input type="submit"/>
-</form>
+<h2>Account</h2>
+<div>
+    <h2>Aktionen</h2>
+    <ul>
+        <li><a>News anlegen</a></li>
+        <li><a>Event anlegen</a></li>
+        <li><a>Profil bearbeiten</a></li>
+    </ul>
+</div>

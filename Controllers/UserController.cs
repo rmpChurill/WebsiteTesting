@@ -3,17 +3,26 @@ namespace Server.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Server.Models;
 
-    public class PersonController : Controller
+    public class UserController : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
-        [HttpPost]
-        public IActionResult Index(Models.User userModel)
+        public IActionResult Login()
         {
-            return View();
+            return this.View();
+        }
+
+        public IActionResult CreateAccount()
+        {
+            return this.View();
+        }
+
+        public IActionResult Edit()
+        {
+            return this.View();
         }
     }
 }

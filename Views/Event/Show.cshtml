@@ -1,41 +1,32 @@
 @model Event
-
 @{
-    ViewData["Title"] = "Events";
+    ViewData["Title"] = "Create New Page";
+    var valid = this.Model != null;
+    var item = this.Model;
 }
 
-<h1>Events</h1>
-
-@if(this.Model == null) 
+@if(valid)
 {
-    <p>Ungültige ID!</p>
+    <h3>@item.Title</h3>
+
+    if(item.Start != item.End)
+    {
+        <div>@item.Start.ToShortDateString() - @item.End.ToShortDateString()</div>
+    }
+    else
+    {
+        <div>@item.Start.ToShortDateString()</div>
+    }
+
+    <div>@item.CreationTime.ToLongDateString()</div>
+    <div>@item.Description</div>
+
+    <div>
+        <a asp-controller="News" asp-action="Delete">Löschen</a>
+        <a asp-controller="News" asp-action="Edit" asp-route-event="@item.Id">Bearbeiten</a>
+    </div>
 }
 else
 {
-    for(int i = 0; i< this.Model.Count; i++)
-    {
-        var item = this.Model[i];
-
-        <div class="event-box">
-            <div class="event-header">
-                <h3><a asp-route-event="@item.Id" asp-controller="event" asp-action="Show">@item.Title</a></h3>
-            </div>
-            
-            if(item.Start != item.End)
-            {
-                <div>@item.Start.ToShortDateString() - @item.End.ToShortDateString()</div>
-            }
-            else
-            {
-                <div>@item.Start.ToShortDateString()</div>
-            }
-
-            <div class="event-body">
-                <p>@item.Description</p>
-            </div>
-
-        </div>
-    }
+    <h3>Ungültige Id!</h3>
 }
-
-<h1>Ende!</h1>

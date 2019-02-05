@@ -1,12 +1,10 @@
 namespace Server.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using Microsoft.AspNetCore.Identity;
 
-    public class User
+    public class User : IdentityUser
     {
-        [Key]
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string Mail { get; set; }
@@ -20,8 +18,6 @@ namespace Server.Models
         public bool CanCreateInternals { get; set; }
 
         public bool CanSeeInternals { get; set; }
-
-        public string PasswordHash { get; set; }
 
         public string Salt { get; set; }
     }

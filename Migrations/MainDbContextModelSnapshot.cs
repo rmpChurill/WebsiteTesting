@@ -74,8 +74,10 @@ namespace server.Migrations
 
             modelBuilder.Entity("Server.Models.User", b =>
                 {
-                    b.Property<string>("Name")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
 
                     b.Property<bool>("CanCreateEvents");
 
@@ -85,15 +87,41 @@ namespace server.Migrations
 
                     b.Property<bool>("CanSeeInternals");
 
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
+
                     b.Property<bool>("IsOperator");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("Mail");
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("Salt");
 
-                    b.HasKey("Name");
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });

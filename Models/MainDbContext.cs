@@ -1,5 +1,6 @@
 namespace Server.Models
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
 
@@ -23,6 +24,8 @@ namespace Server.Models
         public DbSet<Event> Events { get; set; }
 
         public DbSet<News> News { get; set; }
+
+        public DbSet<IdentityUserClaim<string>> Claims { get; set; }
 
         public DbSet<NewsletterSubscription> Subscriptions { get; set; }
 

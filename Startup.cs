@@ -33,6 +33,8 @@ namespace server
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDbContext<MainDbContext>();
+
             // services.AddDbContext<MainDbContext>(options =>
             //     options.UseSqlServer(
             //         Configuration.GetConnectionString("DefaultConnection")));

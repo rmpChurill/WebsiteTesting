@@ -3,20 +3,20 @@ namespace Server.Models
     using System;
     using System.Collections.Generic;
 
-    public class EventCollection
+    public class UserCollection
     {
-        private List<Event> events;
+        private List<User> users;
 
-        public EventCollection(IEnumerable<Event> events)
+        public UserCollection(IEnumerable<User> user)
         {
-            this.events = new List<Event>(events);
+            this.users = new List<User>(user);
         }
 
         public bool Empty
         {
             get
             {
-                return this.events.Count == 0;
+                return this.users.Count == 0;
             }
         }
 
@@ -24,15 +24,15 @@ namespace Server.Models
         {
             get
             {
-                return this.events.Count;
+                return this.users.Count;
             }
         }
 
-        public Event this[int index]
+        public User this[int index]
         {
             get
             {
-                return this.events[index];
+                return this.users[index];
             }
         }
     }

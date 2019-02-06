@@ -1,6 +1,7 @@
 namespace Server.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
     using Server.Models;
 
     public class UserController : Controller
@@ -20,9 +21,17 @@ namespace Server.Controllers
             return this.View();
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int userId)
         {
-            return this.View();
+            var user = MainDbContext.Instance.Users.Where(i => i.Id == userId).SingleOrDefault();
+
+            return this.View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Save()
+        {
+            return this.View("Edit");
         }
     }
 }

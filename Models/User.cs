@@ -3,13 +3,21 @@ namespace Server.Models
     using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Identity;
 
-    public class User : IdentityUser<long>
+    public class User : IdentityUser
     {
-        public string Name { get; set; }
-
-        public string Mail { get; set; }
+        public User()
+        {
+            this.IsOperator = false;
+            this.IsAdmin = false;
+            this.CanCreateNews = false;
+            this.CanCreateEvents = false;
+            this.CanCreateInternals = false;
+            this.CanSeeInternals = false;
+        }
 
         public bool IsOperator { get; set; }
+
+        public bool IsAdmin { get; set; }
 
         public bool CanCreateNews { get; set; }
 
@@ -18,7 +26,5 @@ namespace Server.Models
         public bool CanCreateInternals { get; set; }
 
         public bool CanSeeInternals { get; set; }
-
-        public string Salt { get; set; }
     }
 }

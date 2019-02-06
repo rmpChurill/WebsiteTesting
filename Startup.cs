@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 using Server.Models;
 
 namespace server
@@ -34,11 +35,6 @@ namespace server
             });
 
             services.AddDbContext<MainDbContext>();
-
-            // services.AddDbContext<MainDbContext>(options =>
-            //     options.UseSqlServer(
-            //         Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddDefaultIdentity<User>()
                     .AddEntityFrameworkStores<MainDbContext>();
 

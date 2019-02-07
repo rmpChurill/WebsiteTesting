@@ -1,8 +1,8 @@
-@Model user
+@model User
 @{
     this.ViewData["Title"] = "Edit User";
 }
 
-<form asp-controller="User" asp-action="Save" action="POST">
+<form asp-controller="User" asp-action="Save" method="POST">
     <input type="submit">
 </form>

@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
+    var isAdmin = false;
+    var isOperator = false;
+
+    if(this.SignInManager.IsSignedIn(this.User))
+    {
+        var user = await this.UserManager.GetUserAsync(this.User);
+
+        isAdmin = user.IsAdmin;
+        isOperator = user.IsOperator;
+    }
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,6 +50,16 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Start</a></li>
                     <li><a asp-area="" asp-controller="News" asp-action="Index">Neuigkeiten</a></li>
                     <li><a asp-area="" asp-controller="Events" asp-action="Index">Veranstaltungen</a></li>
+
+                    @if(isOperator)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Mitarbeiter</a></li>
+                    }
+
+                    @if(isAdmin)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Admin</a></li>
+                    }
                 </ul>
 
                 <partial name="_LoginPartial" />

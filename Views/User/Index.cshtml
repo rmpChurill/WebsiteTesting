@@ -1,14 +1,51 @@
-@Model User
+@model User
 @{
     ViewData["Title"] = "Account Management";
+
+    var canCreateNews = this.Model.CanCreateNews;
+    var canCreateEvent = this.Model.CanCreateEvents;
 }
 
 <h2>Account</h2>
 <div>
-    <h2>Aktionen</h2>
+    <form asp-cotnroller="User" asp-action="UpdateUserData" method="post" >
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReceiveNewsletter"></label>
+            <input asp-for="ReceiveNewsletter" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary">Änderungen Speichern</button>
+            <input type="button" id="reset-data" class="btn btn-primmary">Abbrechen</button>
+            <input type="button" id="reset-form" type="" class="btn btn-primmary">Bearbeiten</button>
+        </div>
+    </form>
+</div>
+
+<h2>Aktionen</h2>
+<div>
     <ul>
-        <li><a>News anlegen</a></li>
-        <li><a>Event anlegen</a></li>
-        <li><a>Profil bearbeiten</a></li>
+        @if(canCreateNews)
+        {
+            <li><a asp-controller="News" asp-action="Edit">News anlegen</a></li>
+        }
+
+        @if(canCreateEvent)
+        {
+            <li><a asp-controller="Event" asp-action="Edit">Event anlegen</a></li>
+        }
+
+        <li><a asp-controller="User" asp-action="Edit">Benutzerdaten bearbeiten</a></li>
+        <li><a asp-controller="User" asp-action="ChangePassword">Passwort ändern</a></li>
     </ul>
 </div>

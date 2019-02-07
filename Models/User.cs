@@ -15,7 +15,7 @@ namespace Server.Models
             this.CanSeeInternals = false;
         }
 
-        public bool ReceiveNewsletter {get;set;}
+        public bool ReceiveNewsletter { get; set; }
 
         public bool IsOperator { get; set; }
 
